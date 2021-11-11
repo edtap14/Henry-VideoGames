@@ -2,6 +2,8 @@ const express = require("express");
 const server = express();
 const axios = require("axios");
 const key = "a7da8537df8b4e75a6065a0d8167857b";
+const { v4: uuidv4 } = require("uuid");
+const { Videogames } = require("../db");
 
 server.use(express.json());
 
@@ -73,6 +75,43 @@ module.exports = {
           genres: response.data.genres
         };
         res.status(200).json(datos);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  },
+  getByGenre: function async(req, res, next) {
+    console.log(req.body.genres);
+    const videogame = axios.get(`https://api.rawg.io/api/genres?key=${key}`);
+    videogame.then((response) => {
+      const videogameData = response.data.results.map((videogame) => {
+        return {
+          id: videogame.id,
+          name: videogame.name,
+          slug: videogame.slug,
+          image: videogame.image_background,
+          games: videogame.games
+        };
+      });
+      res.status(200).json(videogameData);
+    });
+  },
+  createGame: function async(req, res, next) {
+    console.log(req.body);
+    const videogame = new Videogames({
+      id: uuidv4(),
+      name: req.body.name,
+      description: req.body.slug,
+      // background_image: req.body.background_image,
+      Ranking: Math.round(req.body.rating),
+      date: req.body.released,
+      plataformas: req.body.platforms
+      // genres: req.body.genres
+    });
+    videogame
+      .save()
+      .then(() => {
+        res.status(201).json(videogame);
       })
       .catch((error) => {
         res.send(error);
