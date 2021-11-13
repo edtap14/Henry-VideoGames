@@ -1,0 +1,33 @@
+.divFilters{
+    /* border: 1px solid red; */
+    text-align: center;
+    color: #921b07;
+    max-width: 50%;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.filterBox{
+    /* border: 1px solid red; */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;;
+}
+.select{
+    width:300px;
+    text-align: center;
+    height: 30px;
+    border: 1px solid #921b07;
+    border-radius: 5px;
+    margin: 10px;
+    color: #921b07;
+}
+.filterBox{
+    display: flex;
+}
+.inputClass{
+    margin-left: 25px;
+}
+

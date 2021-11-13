@@ -1,0 +1,14 @@
+.general{
+    /* border: 1px solid red; */
+    text-align: center;
+    
+}
+
+.divCards{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1720px;
+    flex-wrap: wrap;
+}
+

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.searchgame {
+    /* border: 1px solid red; */
+    /* height: 94.7vh; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* background-color: #C2B593; */
+    margin-top: 0;
+    padding: 0;
+}
+
+.inputSearch{
+    /* border: 1px solid red; */
+    width: 600px;
+    height: 80px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Press Start 2P', cursive;
+    border: 1px solid #921b07;
+    /* background-color:#403835; */
+    color: #921b07;
+    outline: none;
+}
+.inputSearch::placeholder{
+    color: #C2B593;
+    
+}
+.buttonPlay{
+    margin-right: 20px;
+    background-color: #921B07;
+    color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.buttonPlay:hover{
+    cursor:url("https://img.icons8.com/nolan/64/nintendo-switch-pro-controller.png"), auto
+    /* background-color: #C2B593; */
+}
+
+.buttonReset{
+    margin-left: 20px;
+    background-color: #921B07;
+    color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.buttonReset:hover{
+    cursor:url("https://img.icons8.com/nolan/30/nintendo-switch-pro-controller.png"), auto
+    /* background-color: #C2B593; */
+}
+
+
