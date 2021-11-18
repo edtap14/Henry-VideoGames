@@ -11,7 +11,7 @@ const Nav = () => {
             <Link to="/">Re-Start</Link>
           </li>
           <li>
-            <Link to="/aboutus">AboutUs</Link>
+            <Link to="/aboutus">AboutMe</Link>
           </li>
           <li>
             <Link to="/yourgame">YourGame</Link>

@@ -1,0 +1,39 @@
+.firstDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2{
+    color: #921B07;
+    font-size: 40px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+}
+.lebelFormulario{
+    font-size: 20px;
+    color:#921B07;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.inputFormulario{
+    height: 30px;
+}
+
+.selectFormulario{
+    height: 40px;
+}
+
+.buttonForm{
+    margin-top: 20px;
+    text-align: center;
+    align-self: center;
+    background-color: #921B07;
+    color: white;
+}

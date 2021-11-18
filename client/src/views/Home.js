@@ -7,12 +7,6 @@ import Card from "../components/Card";
 import style from "../styles/Home.module.css";
 
 const Home = () => {
-  // fetch(`http://localhost:3001/videogames`)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-
   return (
     <div className={style.divHome}>
       <Nav />
@@ -20,6 +14,8 @@ const Home = () => {
         <SearchGame />
         <Filtros />
         <Card />
+        <button>Siguiente</button>
+        <button>Anterior</button>
       </div>
     </div>
   );

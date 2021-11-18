@@ -1,0 +1,14 @@
+.divFirst{
+    height: 100vh;
+    background-color: #C2B593;
+}
+
+.formulario{
+    height: 85vh;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}

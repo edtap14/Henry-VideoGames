@@ -1,6 +1,5 @@
 import React from "react";
 import style from "../styles/SearchGame.module.css";
-import Filtros from "../components/Filtros";
 
 const SearchGame = () => {
   return (

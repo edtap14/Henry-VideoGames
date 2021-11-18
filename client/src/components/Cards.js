@@ -1,7 +1,8 @@
 import React from "react";
 import style from "../styles/Cards.module.css";
 
-const Cards = () => {
+const Cards = (props) => {
+  console.log(props);
   return (
     <>
       <div className={style.card}>
@@ -10,6 +11,7 @@ const Cards = () => {
           <img
             className={style.imgCards}
             src="https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg"
+            alt="img Game"
           ></img>
           <div className={style.cardBody}>
             <h4 className="card-text">Grand Theft Auto V</h4>

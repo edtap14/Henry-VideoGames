@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import style from "../styles/Landing.module.css";
 import video from "../videos/mario.mp4";
 
