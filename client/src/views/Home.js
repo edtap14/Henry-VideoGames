@@ -5,6 +5,7 @@ import SearchGame from "../components/SearchGame";
 import Filtros from "../components/Filtros";
 import Card from "../components/Card";
 import style from "../styles/Home.module.css";
+import NextPrev from "../components/NexPrev";
 
 const Home = () => {
   return (
@@ -14,8 +15,6 @@ const Home = () => {
         <SearchGame />
         <Filtros />
         <Card />
-        <button>Siguiente</button>
-        <button>Anterior</button>
       </div>
     </div>
   );

@@ -7,56 +7,104 @@ const { Videogames } = require("../db");
 
 server.use(express.json());
 
-const message = "El videojuego no fue encontrado";
-
 module.exports = {
-  getAll: function async(req, res, next) {
-    const videogames = axios.get(`https://api.rawg.io/api/games?key=${key}`);
-    videogames
-      .then((response) => {
-        const videogameData = response.data.results.map((videogame) => {
-          return {
-            id: videogame.id,
-            name: videogame.name,
-            slug: videogame.slug,
-            background_image: videogame.background_image,
-            rating: videogame.rating,
-            released: videogame.released,
-            platforms: videogame.platforms,
-            genres: videogame.genres
-          };
-        });
-        res.status(200).json(videogameData);
-      })
-      .catch((error, message) => {
-        res.status(404).json({ error: error });
+  getGames: async function (req, res) {
+    let arr = [];
+    let x = [];
+    for (let i = 1; i < 6; i++) {
+      let videogames = await axios.get(
+        `https://api.rawg.io/api/games?key=${key}&page=${i}`
+      );
+      // console.log(videogames);
+      let data = await videogames.data.results.map((g) => {
+        return {
+          id: g.id,
+          name: g.name,
+          slug: g.slug,
+          background_image: g.background_image,
+          rating: g.rating,
+          released: g.released,
+          platforms: g.platforms.map((p) => {
+            return {
+              name: p.platform.name
+            };
+          }),
+          genres: g.genres.map((gen) => {
+            return {
+              name: gen.name
+            };
+          })
+        };
       });
+
+      arr.push(data);
+    }
+    const infoConcat = arr[0].concat(arr[1], arr[2], arr[3], arr[4]);
+    res.json(infoConcat);
   },
-  getByName: function async(req, res, next) {
-    console.log(req);
-    const videogame = axios.get(
-      `https://api.rawg.io/api/games?key=${key}&search=${req.body.name}`
-    );
-    videogame
-      .then((response) => {
-        const videogameData = response.data.results.map((videogame) => {
-          return {
-            id: videogame.id,
-            name: videogame.name,
-            slug: videogame.slug,
-            background_image: videogame.background_image,
-            rating: videogame.rating,
-            released: videogame.released,
-            platforms: videogame.platforms,
-            genres: videogame.genres
-          };
-        });
-        res.status(200).json(videogameData);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
-  },
+
+  // getAll: function async(req, res, next) {
+  //   const videogames = axios.get(`https://api.rawg.io/api/games?key=${key}`);
+  //   videogames
+  //     .then((response) => {
+  //       console.log(response);
+  //       const videogameData = {
+  //         next: response.data.next,
+  //         previus: response.data.previous,
+  //         data: response.data.results.map((g) => {
+  //           return {
+  //             id: g.id,
+  //             name: g.name,
+  //             slug: g.slug,
+  //             background_image: g.background_image,
+  //             rating: g.rating,
+  //             released: g.released,
+  //             platforms: g.platforms.map((p) => {
+  //               return {
+  //                 name: p.platform.name
+  //               };
+  //             }),
+  //             genres: g.genres.map((gen) => {
+  //               return {
+  //                 name: gen.name
+  //               };
+  //             })
+  //           };
+  //         })
+  //       };
+  //       // res.send("ohl");
+  //       res.status(200).json(videogameData);
+  //     })
+  //     .catch((error, message) => {
+  //       res.status(400).json({ error: error });
+  //     });
+  // },
+  // // no mover
+  // getByName: function async(req, res, next) {
+  //   console.log(req);
+  //   const videogame = axios.get(
+  //     `https://api.rawg.io/api/games?key=${key}&search=${req.body.name}`
+  //   );
+  //   videogame
+  //     .then((response) => {
+  //       const videogameData = response.data.results.map((videogame) => {
+  //         return {
+  //           id: videogame.id,
+  //           name: videogame.name,
+  //           slug: videogame.slug,
+  //           background_image: videogame.background_image,
+  //           rating: videogame.rating,
+  //           released: videogame.released,
+  //           platforms: videogame.platforms,
+  //           genres: videogame.genres
+  //         };
+  //       });
+  //       res.status(200).json(videogameData);
+  //     })
+  //     .catch((error) => {
+  //       res.send(error);
+  //     });
+  // },
   getById: function async(req, res, next) {
     console.log(req.body.id);
     const videogame = axios.get(
