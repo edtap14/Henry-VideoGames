@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
 import { allGames } from "./getGames";
-// import { prevNext } from "./prevPage";
+import { searchGame } from "./searchGame";
 
 const rootReducer = combineReducers({
-  games: allGames
-  // prev: prevNext,
-  // next: prevNext
+  games: allGames,
+  fgames: searchGame
 });
 
 export default rootReducer;

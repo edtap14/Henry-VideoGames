@@ -7,33 +7,41 @@ import style from "../styles/Card.module.css";
 export const Card = (props) => {
   const prev = "<< Prev";
   const next = "Next >>";
+  const numTarjetas = 16;
 
-  let [page, setPage] = useState(0);
+  const [currentPage, setCurrenPage] = useState(0);
+
   // console.log(props.videoGames.games.games.map((g) => g.id));
-  // console.log(props);
+  console.log(props);
 
   useEffect(() => {
-    props.getGames(page);
+    props.getGames();
   }, []);
 
-  const nextPage = (e) => {
-    e.preventDefault();
-    setPage((page) => page + 1);
-    console.log(page);
+  // useEffect(() => {
+  //   props.findGame();
+  // }, []);
+  const filteredGames = () => {
+    return props.videoGames.games.games.slice(
+      currentPage,
+      currentPage + numTarjetas
+    );
   };
 
-  const prevPage = (e) => {
-    e.preventDefault();
-    setPage(page - 1);
-    console.log((page) => page - 1);
+  const nextPage = () => {
+    setCurrenPage(currentPage + numTarjetas);
   };
 
+  const prevPage = () => {
+    if (currentPage > 0) setCurrenPage(currentPage - numTarjetas);
+  };
+
+  // console.log(filteredGames());
   return (
     <div className={style.general}>
       <h2>All Games</h2>
-
       <div className={style.divCards}>
-        {props.videoGames.games.games.map((g) => {
+        {filteredGames().map((g) => {
           return (
             <div className={style.card} key={g.id}>
               <div>
@@ -79,7 +87,7 @@ export const Card = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     videoGames: state
   };
