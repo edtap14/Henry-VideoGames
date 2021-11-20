@@ -39,12 +39,15 @@ module.exports = {
 
       arr.push(data);
     }
+
     const infoConcat = arr[0].concat(arr[1], arr[2], arr[3], arr[4]);
     res.json(infoConcat);
   },
 
   // getAll: function async(req, res, next) {
-  //   const videogames = axios.get(`https://api.rawg.io/api/games?key=${key}`);
+  //   const videogames = axios.get(
+  //     `https://api.rawg.io/api/games?key=${key}&page_size=80`
+  //   );
   //   videogames
   //     .then((response) => {
   //       console.log(response);
@@ -80,33 +83,33 @@ module.exports = {
   //     });
   // },
   // // no mover
-  // getByName: function async(req, res, next) {
-  //   console.log(req);
-  //   const videogame = axios.get(
-  //     `https://api.rawg.io/api/games?key=${key}&search=${req.body.name}`
-  //   );
-  //   videogame
-  //     .then((response) => {
-  //       const videogameData = response.data.results.map((videogame) => {
-  //         return {
-  //           id: videogame.id,
-  //           name: videogame.name,
-  //           slug: videogame.slug,
-  //           background_image: videogame.background_image,
-  //           rating: videogame.rating,
-  //           released: videogame.released,
-  //           platforms: videogame.platforms,
-  //           genres: videogame.genres
-  //         };
-  //       });
-  //       res.status(200).json(videogameData);
-  //     })
-  //     .catch((error) => {
-  //       res.send(error);
-  //     });
-  // },
+  getByName: function async(req, res, next) {
+    console.log(req);
+    const videogame = axios.get(
+      `https://api.rawg.io/api/games?key=${key}&search=${req.query.name}`
+    );
+    videogame
+      .then((response) => {
+        const videogameData = response.data.results.map((videogame) => {
+          return {
+            id: videogame.id,
+            name: videogame.name,
+            slug: videogame.slug,
+            background_image: videogame.background_image,
+            rating: videogame.rating,
+            released: videogame.released,
+            platforms: videogame.platforms,
+            genres: videogame.genres
+          };
+        });
+        res.status(200).json(videogameData);
+      })
+      .catch((error) => {
+        res.send(error);
+      });
+  },
   getById: function async(req, res, next) {
-    console.log(req.body.id);
+    // console.log(req.body.id);
     const videogame = axios.get(
       `https://api.rawg.io/api/games/${req.body.id}?key=${key}`
     );

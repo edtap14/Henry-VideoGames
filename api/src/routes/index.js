@@ -5,10 +5,11 @@ const VideogameRouter = require("./videogames.js");
 const router = Router();
 
 router.get("/videogames", VideogameRouter.getGames);
-// router.get("/videogames/search", VideogameRouter.getByName);
-// router.get("/videogames/id", VideogameRouter.getById);
-// router.get("/videogames/genres", VideogameRouter.getByGenre);
-// router.post("/videogames/create", VideogameRouter.createGame);
+// router.get("/otraruta", VideogameRouter.getAll);
+router.get("/videogames/search", VideogameRouter.getByName);
+router.get("/videogames/id", VideogameRouter.getById);
+router.get("/videogames/genres", VideogameRouter.getByGenre);
+router.post("/videogames/create", VideogameRouter.createGame);
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
