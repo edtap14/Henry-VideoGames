@@ -5,11 +5,8 @@ const Filtros = () => {
   return (
     <>
       <div className={style.divFilters}>
-        <h4>Filtrar por:</h4>
-        <select className={style.select} name="filter">
-          <option>Nombre de A a Z</option>
-          <option>Nombre de Z a A</option>
-        </select>
+        <h4>Sort by</h4>
+        <button className={style.select}>A - Z</button>
         <h4>Categorias: </h4>
         <form className={style.filterBox}>
           <input

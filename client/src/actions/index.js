@@ -35,3 +35,20 @@ export const findGame = (game) => {
       });
   };
 };
+
+export const detailGame = (id) => {
+  // console.log(id);
+  return (dispatch, getState) => {
+    axios
+      .get(`http://localhost:3001/videogames/details?id=${id}`)
+      .then((response) => {
+        // console.log(response.data);
+        const data = response.data;
+        dispatch({
+          type: "DETAILS_GAME",
+          payload: data
+        });
+        // console.log(data);
+      });
+  };
+};

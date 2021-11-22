@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getGames } from "../actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import style from "../styles/Card.module.css";
 
@@ -12,15 +13,12 @@ export const Card = (props) => {
   const [currentPage, setCurrenPage] = useState(0);
 
   // console.log(props.videoGames.games.games.map((g) => g.id));
-  console.log(props);
+  // console.log(props);
 
   useEffect(() => {
     props.getGames();
   }, []);
 
-  // useEffect(() => {
-  //   props.findGame();
-  // }, []);
   const filteredGames = () => {
     return props.videoGames.games.games.slice(
       currentPage,
@@ -29,7 +27,7 @@ export const Card = (props) => {
   };
 
   const nextPage = () => {
-    setCurrenPage(currentPage + numTarjetas);
+    if (currentPage < 90) setCurrenPage(currentPage + numTarjetas);
   };
 
   const prevPage = () => {
@@ -40,10 +38,16 @@ export const Card = (props) => {
   return (
     <div className={style.general}>
       <h2>All Games</h2>
+      <button type="button" onClick={prevPage}>
+        {prev}
+      </button>
+      <button type="button" onClick={nextPage}>
+        {next}
+      </button>
       <div className={style.divCards}>
         {filteredGames().map((g) => {
           return (
-            <div className={style.card} key={g.id}>
+            <div className={style.card} key={g.name}>
               <div>
                 <h3 className={style.cardTitle}>{g.name.toUpperCase()}</h3>
                 <img
@@ -69,7 +73,11 @@ export const Card = (props) => {
                       <span>{gen.name}, </span>
                     ))}
                   </p>
-                  <button className={style.moreInfo}>More Info</button>
+                  <Link to={`/details/${g.id}`}>
+                    <button className={style.moreInfo} type="submit">
+                      More Info
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -87,7 +95,7 @@ export const Card = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     videoGames: state
   };

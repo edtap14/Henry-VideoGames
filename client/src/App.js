@@ -7,6 +7,7 @@ import PageNotFound from "./views/PageNotFound";
 import Home from "./views/Home";
 import YourGame from "./views/YourGame";
 import SearchGame from "./components/SearchGame";
+import GameDitails from "./views/GameDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route exact path="/home" component={Home} />
       <Route exact path="/pagenotfound" component={PageNotFound} />
       <Route exact path="/yourgame" component={YourGame} />
+      <Route exact path="/details/:id" component={GameDitails} />
     </div>
   );
 }

@@ -109,21 +109,33 @@ module.exports = {
       });
   },
   getById: function async(req, res, next) {
-    // console.log(req.body.id);
+    console.log(req.query.id);
     const videogame = axios.get(
-      `https://api.rawg.io/api/games/${req.body.id}?key=${key}`
+      `https://api.rawg.io/api/games/${req.query.id}?key=${key}`
     );
     videogame
       .then((response) => {
+        // console.log(response.data);
         const datos = {
           id: response.data.id,
           name: response.data.name,
-          slug: response.data.slug,
-          background_image: response.data.background_image,
-          rating: response.data.rating,
+          description: response.data.description_raw,
           released: response.data.released,
-          platforms: response.data.platforms,
-          genres: response.data.genres
+          update: response.data.updated,
+          background_image: response.data.background_image,
+          website: response.data.website,
+          rating: response.data.rating,
+          reviws_count: response.data.reviws_count,
+          platforms: response.data.platforms.map((p) => {
+            return {
+              name: p.platform.name
+            };
+          }),
+          genres: response.data.genres.map((gen) => {
+            return {
+              name: gen.name
+            };
+          })
         };
         res.status(200).json(datos);
       })

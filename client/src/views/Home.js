@@ -1,7 +1,6 @@
 import React from "react";
 
 import Nav from "../components/Nav";
-import SearchGame from "../components/SearchGame";
 import Filtros from "../components/Filtros";
 import Card from "../components/Card";
 import style from "../styles/Home.module.css";

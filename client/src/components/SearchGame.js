@@ -3,6 +3,7 @@ import style from "../styles/SearchGame.module.css";
 import { findGame } from "../actions";
 import { connect } from "react-redux";
 import Nav from "../components/Nav";
+import { Link } from "react-router-dom";
 
 const SearchGame = (props) => {
   const [game, SetGame] = useState("");
@@ -78,7 +79,9 @@ const SearchGame = (props) => {
                       <span>{gen.name}, </span>
                     ))}
                   </p> */}
-                    <button className={style.moreInfo}>More Info</button>
+                    <Link to={`/details/${g.id}`}>
+                      <button className={style.moreInfo}>More Info</button>
+                    </Link>
                   </div>
                 </div>
               </div>

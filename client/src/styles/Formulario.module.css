@@ -1,7 +1,13 @@
 .firstDiv{
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 800px;
+    height: 800px;
+    margin-top: 100px;
+    background-color:#c2b593;
+    color:#921B07;
 }
 
 h2{
@@ -12,7 +18,7 @@ h2{
 .form{
     display: flex;
     flex-direction: column;
-    width: 50vh;
+    width: 700px;
 }
 .lebelFormulario{
     font-size: 20px;
@@ -21,13 +27,22 @@ h2{
     margin-top: 10px;
     margin-left: 20px;
 }
+.inputClass{
+    margin-left: 16px;
+}
 
 .inputFormulario{
     height: 30px;
 }
 
 .selectFormulario{
-    height: 40px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    height:100px;
+    
+    /* justify-content:center; */
+    /* align-items: center; */
 }
 
 .buttonForm{
@@ -37,3 +52,8 @@ h2{
     background-color: #921B07;
     color: white;
 }
+
+.textarea{
+    height: 150px
+}
+

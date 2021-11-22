@@ -7,7 +7,7 @@ const router = Router();
 router.get("/videogames", VideogameRouter.getGames);
 // router.get("/otraruta", VideogameRouter.getAll);
 router.get("/videogames/search", VideogameRouter.getByName);
-router.get("/videogames/id", VideogameRouter.getById);
+router.get("/videogames/details", VideogameRouter.getById);
 router.get("/videogames/genres", VideogameRouter.getByGenre);
 router.post("/videogames/create", VideogameRouter.createGame);
 
