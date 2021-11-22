@@ -11,7 +11,7 @@ const Home = () => {
       <Nav />
       <div className={style.divComponets}>
         {/* <SearchGame /> */}
-        <Filtros />
+        {/* <Filtros /> */}
         <Card />
       </div>
     </div>

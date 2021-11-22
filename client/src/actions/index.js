@@ -52,3 +52,48 @@ export const detailGame = (id) => {
       });
   };
 };
+
+export const filterGenres = (genresGame) => async (dispatch) => {
+  console.log(genresGame.genres.length);
+  const url = "http://localhost:3001/videogames";
+  axios.get(url).then((response) => {
+    const data = response.data;
+    // console.log(data);
+
+    let aux = data.filter((e) => {
+      // console.log(e);
+      if (
+        genresGame.genres.length === undefined ||
+        genresGame.genres.length.length < 1
+      ) {
+        // console.log(1);
+        return e;
+      } else {
+        // console.log(2);
+        // console.log(genresGame);
+        for (let i = 0; i < genresGame.genres.length; i++) {
+          for (let j = 0; j < e.genres.length; j++) {
+            // console.log(e.genres[j].name);
+            // console.log(
+            //   genresGame[i].toLowerCase() === e.genres[j].name.toLowerCase()
+            // );
+            if (genresGame !== undefined || genresGame.genres.length < 1) {
+              // console.log(genresGame.genres[i], e.genres[j].name);
+              if (genresGame.genres[i] === e.genres[j].name) {
+                return e;
+              }
+            }
+          }
+        }
+      }
+    });
+    if (aux.length === 0) {
+      aux = [];
+    }
+    // console.log(aux);
+    dispatch({
+      type: "FILTER_GENRES",
+      payload: aux
+    });
+  });
+};
