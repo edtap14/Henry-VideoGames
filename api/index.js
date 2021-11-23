@@ -27,25 +27,25 @@ const { Videogames } = require("./src/db");
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
-    const { data } = await axios.get(
-      `https://api.rawg.io/api/games?key=${key}`
-    );
-    // console.log(data.results[0].);
+    // const { data } = await axios.get(
+    //   `https://api.rawg.io/api/games?key=${key}`
+    // );
+    // // console.log(data.results[0].);
 
-    data.results.forEach(async (videogames) => {
-      try {
-        await Videogames.create({
-          name: videogames.name,
-          description: videogames.slug,
-          date: videogames.released,
-          Ranking: videogames.rating_top,
-          plataformas: videogames.platforms
-            .map((plataform) => plataform.platform.name)
-            .toString(",")
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    });
+    // data.results.forEach(async (videogames) => {
+    //   try {
+    //     await Videogames.create({
+    //       name: videogames.name,
+    //       description: videogames.slug,
+    //       date: videogames.released,
+    //       Ranking: videogames.rating_top,
+    //       plataformas: videogames.platforms
+    //         .map((plataform) => plataform.platform.name)
+    //         .toString(",")
+    //     });
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // });
   });
 });

@@ -6,18 +6,14 @@ module.exports = (sequelize) => {
   sequelize.define("Videogames", {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     description: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
     Ranking: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true
     },
     plataformas: {

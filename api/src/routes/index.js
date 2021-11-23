@@ -5,7 +5,7 @@ const VideogameRouter = require("./videogames.js");
 const router = Router();
 
 router.get("/videogames", VideogameRouter.getGames);
-// router.get("/otraruta", VideogameRouter.getAll);
+
 router.get("/videogames/search", VideogameRouter.getByName);
 router.get("/videogames/details", VideogameRouter.getById);
 router.get("/videogames/genres", VideogameRouter.getByGenre);

@@ -143,6 +143,7 @@ module.exports = {
         res.send(error);
       });
   },
+
   getByGenre: function async(req, res, next) {
     console.log(req.body.genres);
     const videogame = axios.get(`https://api.rawg.io/api/genres?key=${key}`);
@@ -159,25 +160,17 @@ module.exports = {
       res.status(200).json(videogameData);
     });
   },
-  createGame: function async(req, res, next) {
+
+  createGame: async (req, res, next) => {
     console.log(req.body);
-    const videogame = new Videogames({
-      id: uuidv4(),
+    const videogame = await Videogames.create({
       name: req.body.name,
-      description: req.body.slug,
-      // background_image: req.body.background_image,
-      Ranking: Math.round(req.body.rating),
-      date: req.body.released,
-      plataformas: req.body.platforms
-      // genres: req.body.genres
+      description: req.body.description,
+      Ranking: req.body.Ranking,
+      plataformas: req.body.plataformas,
+      genres: req.body.genres
     });
-    videogame
-      .save()
-      .then(() => {
-        res.status(201).json(videogame);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
+
+    res.send(videogame);
   }
 };
