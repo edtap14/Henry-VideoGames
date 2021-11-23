@@ -19,6 +19,9 @@ const Nav = () => {
           <li>
             <Link to="/yourgame">YourGame</Link>
           </li>
+          <li>
+            <Link to="/filters">Filters</Link>
+          </li>
         </ul>
       </div>
     </Fragment>

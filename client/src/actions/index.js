@@ -54,7 +54,7 @@ export const detailGame = (id) => {
 };
 
 export const filterGenres = (genresGame) => async (dispatch) => {
-  console.log(genresGame.genres.length);
+  // console.log(genresGame.genres.length);
   const url = "http://localhost:3001/videogames";
   axios.get(url).then((response) => {
     const data = response.data;
@@ -64,7 +64,7 @@ export const filterGenres = (genresGame) => async (dispatch) => {
       // console.log(e);
       if (
         genresGame.genres.length === undefined ||
-        genresGame.genres.length.length < 1
+        genresGame.genres.length < 1
       ) {
         // console.log(1);
         return e;

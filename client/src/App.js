@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import YourGame from "./views/YourGame";
 import SearchGame from "./components/SearchGame";
 import GameDitails from "./views/GameDetails";
+import Filtros from "./components/Filtros";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route exact path="/pagenotfound" component={PageNotFound} />
       <Route exact path="/yourgame" component={YourGame} />
       <Route exact path="/details/:id" component={GameDitails} />
+      <Route exact path="/filters" component={Filtros} />
     </div>
   );
 }
