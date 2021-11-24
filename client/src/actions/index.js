@@ -62,10 +62,7 @@ export const filterGenres = (genresGame) => async (dispatch) => {
 
     let aux = data.filter((e) => {
       // console.log(e);
-      if (
-        genresGame.genres.length === undefined ||
-        genresGame.genres.length < 1
-      ) {
+      if (genresGame.genres === undefined || genresGame.genres.length < 1) {
         // console.log(1);
         return e;
       } else {

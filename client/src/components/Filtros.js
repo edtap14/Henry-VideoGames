@@ -70,8 +70,13 @@ const Filtros = (props) => {
   // var dataOrdenada = nuevoArray.sort(sortByName).reverse();
 
   function filtrado() {
-    // console.log(props.filterGames.filGames.games);
-    return nuevoArray;
+    if (props.filterGames.filGames.games === undefined) {
+      return <h>Loading...</h>;
+    } else {
+      let gamesData = props.filterGames.filGames.games;
+      return gamesData;
+    }
+    // return nuevoArray;
   }
   // filtrado();
   return (
@@ -231,45 +236,48 @@ const Filtros = (props) => {
       </div>
       <h3>Games: {data.genres}</h3>
       <div className={style.divCards}>
-        {/* {filtrado().map((g) => g.name)} */}
-        {filtrado().map((g) => {
-          return (
-            <div className={style.card} key={g.name}>
-              <div>
-                <h3 className={style.cardTitle}>{g.name.toUpperCase()}</h3>
-                <img
-                  className={style.imgCards}
-                  src={g.background_image}
-                  alt="img Game"
-                ></img>
-                <div className={style.cardBody}>
-                  <h4 className="card-text">{g.slug.toUpperCase()}</h4>
-                  <h3>Rating:</h3>
-                  <p>{g.rating}</p>
-                  <h3>Released:</h3>
-                  <p>{g.released}</p>
-                  <h3>Plataformas:</h3>
-                  <p>
-                    {g.platforms.map((p) => (
-                      <span key={p.id}>{p.name}, </span>
-                    ))}
-                  </p>
-                  <h3>Generos:</h3>
-                  <p>
-                    {g.genres.map((gen) => (
-                      <span>{gen.name}, </span>
-                    ))}
-                  </p>
-                  <Link to={`/details/${g.id}`}>
-                    <button className={style.moreInfo} type="submit">
-                      More Info
-                    </button>
-                  </Link>
+        {props.filterGames.filGames.games === undefined ? (
+          <h>Loading...</h>
+        ) : (
+          props.filterGames.filGames.games.map((g) => {
+            return (
+              <div className={style.card} key={g.name}>
+                <div>
+                  <h3 className={style.cardTitle}>{g.name}</h3>
+                  <img
+                    className={style.imgCards}
+                    src={g.background_image}
+                    alt="img Game"
+                  ></img>
+                  <div className={style.cardBody}>
+                    <h4 className="card-text">{g.slug}</h4>
+                    <h3>Rating:</h3>
+                    <p>{g.rating}</p>
+                    <h3>Released:</h3>
+                    <p>{g.released}</p>
+                    <h3>Plataformas:</h3>
+                    <p>
+                      {g.platforms.map((p) => (
+                        <span key={p.id}>{p.name}, </span>
+                      ))}
+                    </p>
+                    <h3>Generos:</h3>
+                    <p>
+                      {g.genres.map((gen) => (
+                        <span>{gen.name}, </span>
+                      ))}
+                    </p>
+                    <Link to={`/details/${g.id}`}>
+                      <button className={style.moreInfo} type="submit">
+                        More Info
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     </div>
   );
